@@ -1,0 +1,28 @@
+# Secrets and local env files
+.env
+.env.*
+!.env.example
+!**/.env.example
+
+# Frontend
+node_modules/
+dist/
+
+# Backend / Java
+target/
+*.class
+
+# Logs
+logs/
+*.log
+
+# IDE and editor files
+.idea/
+.vscode/
+*.iml
+*.ipr
+*.iws
+
+# OS files
+.DS_Store
+Thumbs.db
