@@ -20,7 +20,7 @@ public final class AnalyticsDtos {
     ) {
     }
 
-    public record Anomaly(String ruleCode, String title, String severity, String evidence, BigDecimal threshold) {
+    public record Anomaly(Long billId, String ruleCode, String title, String severity, String evidence, BigDecimal threshold) {
     }
 
     public record MonthlySpend(String month, BigDecimal amount) {

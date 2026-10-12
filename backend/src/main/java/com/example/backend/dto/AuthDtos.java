@@ -23,9 +23,34 @@ public final class AuthDtos {
     ) {
     }
 
-    public record UserResponse(Long id, String fullName, String email, LocalDateTime createdAt) {
+    public record UpdateProfileRequest(
+            @NotBlank @Size(max = 100) String fullName,
+            @NotBlank @Email @Size(max = 150) String email
+    ) {
+    }
+
+    public record ChangePasswordRequest(
+            @NotBlank String currentPassword,
+            @NotBlank @Size(min = 8, max = 100) String newPassword
+    ) {
+    }
+
+    public record DeleteAccountRequest(
+            @NotBlank String currentPassword
+    ) {
+    }
+
+    public record UserResponse(
+            Long id,
+            String fullName,
+            String email,
+            LocalDateTime createdAt
+    ) {
     }
 
     public record AuthResponse(String token, UserResponse user) {
+    }
+
+    public record ProfileUpdateResponse(String token, UserResponse user) {
     }
 }

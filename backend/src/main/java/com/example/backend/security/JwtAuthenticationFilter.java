@@ -45,9 +45,9 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
                         SecurityContextHolder.getContext().setAuthentication(authentication);
                     }
                 }
-            } catch (RuntimeException ignored) {
-                // Invalid tokens are rejected by the authorization layer without exposing token details.
-            }
+            }catch (RuntimeException ignored) {
+    // Invalid tokens are rejected by the authorization layer without exposing token details.
+}
         }
         filterChain.doFilter(request, response);
     }

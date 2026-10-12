@@ -11,4 +11,5 @@ public interface BillLineItemRepository extends JpaRepository<BillLineItem, Long
     java.util.Optional<BillLineItem> findByIdAndBillId(Long id, Long billId);
 
     void deleteByBillId(Long billId);
+    void deleteByBillUserId(Long userId);
 }

@@ -22,11 +22,13 @@ public class AnalyticsService {
     private static final BigDecimal HUNDRED = BigDecimal.valueOf(100);
     private final BillService billService;
     private final BillRepository billRepository;
+    private final AnomalyService anomalyService;
 
-    public AnalyticsService(BillService billService, BillRepository billRepository) {
-        this.billService = billService;
-        this.billRepository = billRepository;
-    }
+    public AnalyticsService(BillService billService,BillRepository billRepository,AnomalyService anomalyService) {
+    this.billService = billService;
+    this.billRepository = billRepository;
+    this.anomalyService = anomalyService;
+}
 
     @Transactional(readOnly = true)
     public AnalyticsDtos.Comparison compare(String email, Long currentId, Long previousId) {
@@ -68,7 +70,7 @@ public class AnalyticsService {
                                 && b.getStatus() != BillStatus.PAID).limit(5)
                         .map(b -> new AnalyticsDtos.DueBill(b.getId(), b.getProviderName(), b.getDueDate(), b.getTotalAmount())).toList(),
                 bills.stream().limit(5).map(billService::toResponse).toList(),
-                List.of());
+                anomalyService.detect(bills));
     }
 
     private BigDecimal percentChange(BigDecimal previous, BigDecimal current) {
