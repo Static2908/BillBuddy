@@ -7,10 +7,27 @@
 # Frontend
 node_modules/
 dist/
+dist-ssr/
+coverage/
+.nyc_output/
+.vite/
+.cache/
+.eslintcache
+.stylelintcache
 
 # Backend / Java
 target/
 *.class
+
+# Local data and temporary files
+*.db
+*.sqlite
+*.sqlite3
+*.tmp
+*.temp
+*.swp
+*.swo
+*~
 
 # Logs
 logs/
